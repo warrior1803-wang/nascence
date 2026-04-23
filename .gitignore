@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# 原始文件不需要放上去
+original.html
+
+# Wrangler本地缓存
+.wrangler/
+
+# 环境变量（如果有的话）
+.env
+.env.local
+
+# Mac系统文件
+.DS_Store

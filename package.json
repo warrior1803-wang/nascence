@@ -1,0 +1,13 @@
+{
+  "name": "nascence",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy:worker": "wrangler deploy",
+    "secret:deepseek": "wrangler secret put DEEPSEEK_API_KEY"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

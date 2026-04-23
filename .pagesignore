@@ -1,0 +1,12 @@
+README.md
+README_CN.md
+assets/
+worker.js
+wrangler.toml
+original.html
+.gitignore
+.pagesignore
+node_modules/
+package.json
+package-lock.json
+.wrangler/

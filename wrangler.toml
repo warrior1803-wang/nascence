@@ -1,0 +1,19 @@
+name = "biri-worker"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Secrets (set via: wrangler secret put SILICONFLOW_API_KEY)
+
+# ── KV Namespaces ────────────────────────────────────────────────────────────
+# Create both in Cloudflare Dashboard → Workers & Pages → KV, then fill in IDs.
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "2367ed3013fd4294a14888b0e0cb4c7b"
+
+[[kv_namespaces]]
+binding = "CACHE_KV"
+id = "301c393ff1914f0eab92a0245b39de50"
+
+[observability]
+enabled = true
