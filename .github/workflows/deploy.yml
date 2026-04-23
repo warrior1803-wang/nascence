@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      pages: ${{ steps.filter.outputs.pages }}
+      worker: ${{ steps.filter.outputs.worker }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            pages:
+              - 'public/**'
+              - 'functions/**'
+            worker:
+              - 'worker.js'
+              - 'wrangler.toml'
+
+  deploy-pages:
+    needs: changes
+    if: needs.changes.outputs.pages == 'true'
+    name: Deploy Pages (frontend + functions)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: pages deploy public --project-name nascence --branch=production
+
+  deploy-worker:
+    needs: changes
+    if: needs.changes.outputs.worker == 'true'
+    name: Deploy Worker (backend)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          command: deploy
