@@ -125,6 +125,12 @@ Nascence is a simplified, more accessible version of that idea — no lunar cale
 
 ---
 
+## About
+
+Made by Alex · Full-stack engineer, building things for fun.
+- GitHub: https://github.com/warrior1803-wang
+- Threads: https://www.threads.com/@hawk.2685455
+
 ## License
 
 MIT
